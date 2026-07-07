@@ -3,6 +3,7 @@ package org.firstinspires.ftc.teamcode;
 import com.qualcomm.robotcore.eventloop.opmode.LinearOpMode;
 import com.qualcomm.robotcore.eventloop.opmode.TeleOp;
 import com.qualcomm.robotcore.hardware.DcMotor;
+import com.qualcomm.robotcore.hardware.Servo;
 @TeleOp(name="My First TeleOp")
 public class MyFIrstTeleOp extends LinearOpMode{
 
@@ -11,8 +12,11 @@ public class MyFIrstTeleOp extends LinearOpMode{
     private DcMotor frontRight;
     private DcMotor backRight;
     private DcMotor intake;
-
     private DcMotor platformMotor;
+
+    private Servo pushMech;
+
+
 
 @Override
 public void runOpMode() {
@@ -23,6 +27,7 @@ public void runOpMode() {
     backRight  = hardwareMap.get(DcMotor.class, "back_right_motor");
     intake = hardwareMap.get(DcMotor.class, "intake_motor");
     platformMotor = hardwareMap.get(DcMotor.class, "platform_motor");
+    pushMech = hardwareMap.get(Servo.class, "push_mech");
 
     frontLeft.setDirection(DcMotor.Direction.REVERSE);
     backLeft.setDirection(DcMotor.Direction.REVERSE);
@@ -57,6 +62,12 @@ public void runOpMode() {
             platformMotor.setPower(-0.5); // Move backward at half speed
         } else {
             platformMotor.setPower(0.0);  // Stop when no buttons are pressed
+        }
+
+        if (gamepad1.a) {
+            pushMech.setPosition(1.0); // Open the claw completely
+        } else if (gamepad1.b) {
+            pushMech.setPosition(0.0); // Close the claw completely
         }
     }
 }

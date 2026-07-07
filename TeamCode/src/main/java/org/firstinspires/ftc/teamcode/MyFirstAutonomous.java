@@ -3,6 +3,7 @@ package org.firstinspires.ftc.teamcode;
 import com.qualcomm.robotcore.eventloop.opmode.Autonomous;
 import com.qualcomm.robotcore.eventloop.opmode.LinearOpMode;
 import com.qualcomm.robotcore.hardware.DcMotor;
+import com.qualcomm.robotcore.hardware.Servo;
 
 @Autonomous(name="My First Autonomous")
 public class MyFirstAutonomous extends LinearOpMode{
@@ -11,6 +12,8 @@ public class MyFirstAutonomous extends LinearOpMode{
     private DcMotor backLeft;
     private DcMotor frontRight;
     private DcMotor backRight;
+
+    private Servo pushMech;
 
     //FUNCTIONS:
     public void driveForward(double power, long time) {
@@ -40,6 +43,11 @@ public class MyFirstAutonomous extends LinearOpMode{
         backLeft.setPower(0);
         frontRight.setPower(0);
         backRight.setPower(0);
+    }
+
+    // Custom function to set claw position
+    public void setServoMoto(double position) {
+        pushMech.setPosition(position);
     }
     @Override
     public void runOpMode() {
@@ -77,5 +85,9 @@ public class MyFirstAutonomous extends LinearOpMode{
         driveForward(0.5, 1000);
 
         strafeRight(0.5, 1000);
+
+        setServoMoto(0.0);
+
+        sleep(500);
     }
 }
