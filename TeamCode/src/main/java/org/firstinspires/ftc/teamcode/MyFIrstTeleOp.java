@@ -49,7 +49,7 @@ public void runOpMode() {
         } else {
             intake.setPower(0.0);  // Stop spinning when no buttons are pressed
         }
-        
+
         // Platform Control Logic
         if (gamepad1.dpad_up) {
             platformMotor.setPower(0.5);  // Move forward at half speed
