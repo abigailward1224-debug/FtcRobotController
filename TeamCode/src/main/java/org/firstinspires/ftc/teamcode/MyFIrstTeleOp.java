@@ -10,8 +10,9 @@ public class MyFIrstTeleOp extends LinearOpMode{
     private DcMotor backLeft;
     private DcMotor frontRight;
     private DcMotor backRight;
-
     private DcMotor intake;
+
+    private DcMotor platformMotor;
 
 @Override
 public void runOpMode() {
@@ -21,6 +22,7 @@ public void runOpMode() {
     frontRight = hardwareMap.get(DcMotor.class, "front_right_motor");
     backRight  = hardwareMap.get(DcMotor.class, "back_right_motor");
     intake = hardwareMap.get(DcMotor.class, "intake_motor");
+    platformMotor = hardwareMap.get(DcMotor.class, "platform_motor");
 
     frontLeft.setDirection(DcMotor.Direction.REVERSE);
     backLeft.setDirection(DcMotor.Direction.REVERSE);
@@ -46,6 +48,15 @@ public void runOpMode() {
             intake.setPower(-1.0); // Spin outward at full speed
         } else {
             intake.setPower(0.0);  // Stop spinning when no buttons are pressed
+        }
+        
+        // Platform Control Logic
+        if (gamepad1.dpad_up) {
+            platformMotor.setPower(0.5);  // Move forward at half speed
+        } else if (gamepad1.dpad_down) {
+            platformMotor.setPower(-0.5); // Move backward at half speed
+        } else {
+            platformMotor.setPower(0.0);  // Stop when no buttons are pressed
         }
     }
 }
