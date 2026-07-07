@@ -27,6 +27,20 @@ public class MyFirstAutonomous extends LinearOpMode{
         backRight.setPower(0);
     }
 
+    // Custom function to strafe right (use negative power to strafe left)
+    public void strafeRight(double power, long time) {
+        frontLeft.setPower(power);
+        backLeft.setPower(-power);
+        frontRight.setPower(-power);
+        backRight.setPower(power);
+
+        sleep(time);
+
+        frontLeft.setPower(0);
+        backLeft.setPower(0);
+        frontRight.setPower(0);
+        backRight.setPower(0);
+    }
     @Override
     public void runOpMode() {
 
@@ -61,5 +75,7 @@ public class MyFirstAutonomous extends LinearOpMode{
         backRight.setPower(0.0); */
 
         driveForward(0.5, 1000);
+
+        strafeRight(0.5, 1000);
     }
 }
