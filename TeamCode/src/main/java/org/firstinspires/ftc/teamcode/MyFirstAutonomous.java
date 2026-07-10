@@ -4,7 +4,7 @@ import com.qualcomm.robotcore.eventloop.opmode.Autonomous;
 import com.qualcomm.robotcore.eventloop.opmode.LinearOpMode;
 import com.qualcomm.robotcore.hardware.DcMotor;
 import com.qualcomm.robotcore.hardware.Servo;
-//i like turtles
+//i like turtles and tacos
 @Autonomous(name="My First Autonomous")
 public class MyFirstAutonomous extends LinearOpMode{
     // 1. Declare all 4 motors just like TeleOp
