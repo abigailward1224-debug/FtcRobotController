@@ -12,7 +12,6 @@ public class MyFirstAutonomous extends LinearOpMode{
     private DcMotor backLeft;
     private DcMotor frontRight;
     private DcMotor backRight;
-
     private Servo pushMech;
 
     //FUNCTIONS:
@@ -48,6 +47,21 @@ public class MyFirstAutonomous extends LinearOpMode{
     // Custom function to set claw position
     public void setServoMoto(double position) {
         pushMech.setPosition(position);
+    }
+
+    public void swingTurnRight(double power, long time){
+        //left side drive forward to swing robot to right
+        frontLeft.setPower(power);
+        backLeft.setPower(power);
+
+        //right side remain stationary
+        frontRight.setPower(0.0);
+        backRight.setPower(0.0);
+
+        sleep(time);
+        //all motors go to 0 power
+        frontLeft.setPower(0.0);
+        backLeft.setPower(0.0);
     }
     @Override
     public void runOpMode() {
@@ -87,6 +101,8 @@ public class MyFirstAutonomous extends LinearOpMode{
         strafeRight(0.5, 1000);
 
         setServoMoto(0.0);
+
+        swingTurnRight(0.5, 1200);
 
         sleep(500);
     }
