@@ -4,7 +4,7 @@ import com.qualcomm.robotcore.eventloop.opmode.Autonomous;
 import com.qualcomm.robotcore.eventloop.opmode.LinearOpMode;
 import com.qualcomm.robotcore.hardware.DcMotor;
 import com.qualcomm.robotcore.hardware.Servo;
-
+//i like turtles
 @Autonomous(name="My First Autonomous")
 public class MyFirstAutonomous extends LinearOpMode{
     // 1. Declare all 4 motors just like TeleOp
@@ -33,6 +33,19 @@ public class MyFirstAutonomous extends LinearOpMode{
     public void strafeRight(double power, long time) {
         frontLeft.setPower(power);
         backLeft.setPower(-power);
+        frontRight.setPower(-power);
+        backRight.setPower(power);
+
+        sleep(time);
+
+        frontLeft.setPower(0);
+        backLeft.setPower(0);
+        frontRight.setPower(0);
+        backRight.setPower(0);
+    }
+    public void strafeLeft(double power, long time) {
+        frontLeft.setPower(-power);
+        backLeft.setPower(power);
         frontRight.setPower(-power);
         backRight.setPower(power);
 
@@ -99,6 +112,8 @@ public class MyFirstAutonomous extends LinearOpMode{
         driveForward(0.5, 1000);
 
         strafeRight(0.5, 1000);
+
+        strafeLeft(0.5, 1000);
 
         setServoMoto(0.0);
 
